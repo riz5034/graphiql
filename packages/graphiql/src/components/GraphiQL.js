@@ -294,11 +294,6 @@ export class GraphiQL extends React.Component {
           title="Show History"
           label="History"
         />
-        <ToolbarButton
-          onClick={this.handleDownload}
-          title="Download"
-          label="Download"
-        />
       </GraphiQL.Toolbar>
     );
 
