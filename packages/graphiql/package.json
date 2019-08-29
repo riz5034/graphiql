@@ -1,6 +1,6 @@
 {
   "name": "@zhaor/graphiql",
-  "version": "0.14.9",
+  "version": "0.15.0",
   "description": "An graphical interactive in-browser GraphQL IDE.",
   "contributors": [
     "Hyohyeon Jeong <asiandrummer@fb.com>",
