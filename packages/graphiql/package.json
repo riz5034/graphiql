@@ -1,15 +1,15 @@
 {
   "name": "@zhaor/graphiql",
-  "version": "0.14.5",
+  "version": "0.14.8",
   "description": "An graphical interactive in-browser GraphQL IDE.",
   "contributors": [
     "Hyohyeon Jeong <asiandrummer@fb.com>",
     "Lee Byron <lee@leebyron.com> (http://leebyron.com/)"
   ],
   "repository": "https://github.com/riz5034/graphiql/tree/master/packages/graphiql",
-  "homepage": "http://github.com/riz5034/graphiql/tree/master/packages/graphiql#readme",
+  "homepage": "https://github.com/riz5034/graphiql/tree/master/packages/graphiql",
   "bugs": {
-    "url": "https://github.com/riz5034/graphiql/issues?q=issue+label:graphiql"
+    "url": "https://github.com/riz5034/graphiql/tree/master/packages/graphiql"
   },
   "license": "MIT",
   "main": "dist/index.js",
