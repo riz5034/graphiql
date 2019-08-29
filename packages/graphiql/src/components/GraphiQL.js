@@ -294,6 +294,11 @@ export class GraphiQL extends React.Component {
           title="Show History"
           label="History"
         />
+        <ToolbarButton
+          // onClick={this.handleToggleHistory}
+          title="Download CSV"
+          label="Download"
+        />
       </GraphiQL.Toolbar>
     );
 
