@@ -295,7 +295,7 @@ export class GraphiQL extends React.Component {
           label="History"
         />
         <ToolbarButton
-          // onClick={this.handleToggleHistory}
+          onClick={this.handleDownloadCSV}
           title="Download CSV"
           label="Download"
         />
@@ -746,6 +746,10 @@ export class GraphiQL extends React.Component {
 
     this.handleRunQuery(operationName);
   }
+
+  handleDownloadCSV = () => {
+    console.log("Downloading CSV...")
+  };
 
   handlePrettifyQuery = () => {
     const editor = this.getQueryEditor();
