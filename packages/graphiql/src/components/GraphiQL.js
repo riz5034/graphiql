@@ -36,6 +36,7 @@ import {
   introspectionQueryName,
   introspectionQuerySansSubscriptions,
 } from '../utility/introspectionQueries';
+import * as jsonexport from 'jsonexport/dist';
 
 const DEFAULT_DOC_EXPLORER_WIDTH = 350;
 
@@ -862,8 +863,6 @@ export class GraphiQL extends React.Component {
         operationName,
         result => {
           if (queryID === this._editorQueryID) {
-
-            const jsonexport = require('jsonexport'); // Local copy of package
             let res = result.data[Object.keys(result.data)[0]]; // Consider changing to check against dictionary
             // Alt code 10 (alt + 10) used to split primitive array values, match in functions parsePrimitiveArr() and findPrimCol()
             let splitter = '◙';
@@ -872,6 +871,7 @@ export class GraphiQL extends React.Component {
               arrayPathString: splitter
             }, function (err, csv) {
               // if (err) return console.log(err);
+              console.log(csv);
               handlePrimArr(csv, splitter).then(output => {
                 console.log(output);
                 // response.setHeader('Content-type', "application/octet-stream");
