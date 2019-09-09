@@ -748,7 +748,8 @@ export class GraphiQL extends React.Component {
   }
 
   handleDownloadCSV = () => {
-    console.log("Downloading CSV...")
+    console.log("Downloading CSV...");
+    this._runQueryAtCursor();
   };
 
   handlePrettifyQuery = () => {
