@@ -744,13 +744,65 @@ export class GraphiQL extends React.Component {
       }
     }
 
-    this.handleRunQuery(operationName);
+    this.handleRunQueryCSV(operationName);
   }
+
+  handleRunQueryCSV = selectedOperationName => {
+    this._editorQueryID++;
+    const queryID = this._editorQueryID;
+
+    // Use the edited query after autoCompleteLeafs() runs or,
+    // in case autoCompletion fails (the function returns undefined),
+    // the current query from the editor.
+    const editedQuery = this.autoCompleteLeafs() || this.state.query;
+    const variables = this.state.variables;
+    let operationName = this.state.operationName;
+
+    // If an operation was explicitly provided, different from the current
+    // operation name, then report that it changed.
+    if (selectedOperationName && selectedOperationName !== operationName) {
+      operationName = selectedOperationName;
+      this.handleEditOperationName(operationName);
+    }
+
+    try {
+      this.setState({
+        isWaitingForResponse: true,
+        response: null,
+        operationName,
+      });
+
+      // _fetchQuery may return a subscription.
+      const subscription = this._fetchQuery(
+        editedQuery,
+        variables,
+        operationName,
+        result => {
+          if (queryID === this._editorQueryID) {
+            this.setState({
+              isWaitingForResponse: false,
+              response: GraphiQL.formatResult(result),
+            });
+            console.log("--result--");
+            console.log(result);
+            console.log("--formatted result--")
+            console.log(GraphiQL.formatResult(result));
+          }
+        },
+      );
+
+      this.setState({ subscription });
+    } catch (error) {
+      this.setState({
+        isWaitingForResponse: false,
+        response: error.message,
+      });
+    }
+  };
 
   handleDownloadCSV = () => {
     console.log("Downloading CSV...");
     this._runQueryAtCursor();
-    console.log("test");
   };
 
   handlePrettifyQuery = () => {
