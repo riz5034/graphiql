@@ -59,6 +59,7 @@
     "codemirror": "^5.48.4",
     "fb-watchman": "^2.0.0",
     "graphql-config": "^2.2.1",
+    "jsonexport": "^2.4.1",
     "nullthrows": "^1.1.1",
     "vscode-jsonrpc": "^4.0.0",
     "vscode-languageserver": "^5.2.1",
