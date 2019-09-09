@@ -36,7 +36,7 @@ import {
   introspectionQueryName,
   introspectionQuerySansSubscriptions,
 } from '../utility/introspectionQueries';
-import * as jsonexport from 'jsonexport/dist';
+import * as jsonexport from 'jsonexport/dist/index';
 
 const DEFAULT_DOC_EXPLORER_WIDTH = 350;
 
