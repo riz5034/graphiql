@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { buildClientSchema, GraphQLSchema, parse, print } from 'graphql';
 import copyToClipboard from 'copy-to-clipboard';
+import jsonexport from 'jsonexport/dist';
 
 import { ExecuteButton } from './ExecuteButton';
 import { ImagePreview } from './ImagePreview';
@@ -36,7 +37,6 @@ import {
   introspectionQueryName,
   introspectionQuerySansSubscriptions,
 } from '../utility/introspectionQueries';
-import * as jsonexport from 'jsonexport/dist/index';
 
 const DEFAULT_DOC_EXPLORER_WIDTH = 350;
 
@@ -874,9 +874,21 @@ export class GraphiQL extends React.Component {
               console.log(csv);
               handlePrimArr(csv, splitter).then(output => {
                 console.log(output);
-                // response.setHeader('Content-type', "application/octet-stream");
-                // response.setHeader('Content-disposition', 'attachment; filename=output.csv');
-                // response.send(output);
+
+                function download(filename, text) {
+                  var element = document.createElement('a');
+                  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                  element.setAttribute('download', filename);
+              
+                  element.style.display = 'none';
+                  document.body.appendChild(element);
+              
+                  element.click();
+              
+                  document.body.removeChild(element);
+              }
+
+              download('output.csv', output);  
               });
             });
 
